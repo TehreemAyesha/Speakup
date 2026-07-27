@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SpeakUp
 
-## Getting Started
+SpeakUp is an AI debate coach for students who do not have reliable access to a debate mentor. Learn core skills, get a specific critique of a written case, and practice delivery with audio feedback.
 
-First, run the development server:
+## Tech stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js App Router, TypeScript, Tailwind CSS
+- Firebase client SDK: Firestore for guest progress/practice records and Storage for uploaded recordings
+- Groq API via server-only Next.js route handlers: `llama-3.3-70b-versatile` for critique/chat and `whisper-large-v3` for transcripts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Install dependencies: `npm install`
+2. Copy `.env.local.example` to `.env.local`.
+3. Add a Groq API key and your Firebase web-app configuration values.
+4. In Firebase, enable Firestore and Storage, then configure development security rules appropriate for your project.
+5. Start the app with `npm run dev`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Groq calls are made only from `/api/critique`, `/api/chat`, and `/api/transcribe`; the browser never receives `GROQ_API_KEY`.
 
-## Learn More
+## Known Limitations
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pitch/tone analysis and support for other debate formats are intentionally out of scope. SpeakUp focuses on transparent, useful feedback rather than scoring a student against an arbitrary ideal.

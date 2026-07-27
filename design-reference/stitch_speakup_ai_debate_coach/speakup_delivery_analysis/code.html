@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Delivery Analysis | SpeakUp AI Debate Coach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#0040df",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "outline": "#747688",
+                    "surface-tint": "#104af0",
+                    "error": "#ba1a1a",
+                    "primary-container": "#2d5bff",
+                    "secondary-container": "#82f5c1",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#005137",
+                    "outline-variant": "#c4c5d9",
+                    "on-secondary-container": "#00714e",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#4d565b",
+                    "tertiary-container": "#656e73",
+                    "surface": "#f8f9ff",
+                    "on-surface-variant": "#434656",
+                    "surface-container": "#e5eeff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-primary-container": "#efefff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-fixed": "#001355",
+                    "tertiary-fixed-dim": "#bfc8ce",
+                    "primary-fixed": "#dde1ff",
+                    "background": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "tertiary-fixed": "#dbe4ea",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "inverse-primary": "#b8c3ff",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#85f8c4",
+                    "on-tertiary-fixed-variant": "#3f484d",
+                    "secondary": "#006c4a",
+                    "secondary-fixed-dim": "#68dba9",
+                    "on-tertiary-fixed": "#141d21",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#0035bd",
+                    "on-tertiary-container": "#e8f1f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "1rem",
+                    "container-max": "1280px",
+                    "stack-md": "1rem",
+                    "stack-lg": "2rem",
+                    "gutter": "1.5rem",
+                    "margin-desktop": "2.5rem",
+                    "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .recording-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        .waveform-bar {
+            transition: height 0.2s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-bright dark:bg-inverse-surface shadow-sm fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SpeakUp</span>
+</div>
+<div class="flex items-center gap-stack-lg">
+<nav class="hidden md:flex gap-stack-md">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary-container transition-colors" href="#">Lessons</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary-container transition-colors" href="#">Critique</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary" href="#">Delivery</a>
+</nav>
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- NavigationDrawer -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-surface-container-low dark:bg-on-surface shadow-md hidden lg:flex flex-col py-6 gap-stack-md mt-16">
+<div class="px-6 mb-4">
+<span class="font-headline-md text-headline-md text-primary">Debate Coach</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Lessons</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Critique</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 mx-2 border-l-4 border-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-label-md text-label-md">Delivery</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto w-full">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg mb-2">Delivery Analysis</h1>
+<p class="text-on-surface-variant font-body-md">Refine your oratory skills with real-time feedback on pace, clarity, and impact.</p>
+</div>
+<!-- Bento Grid - Recorder Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-stack-lg">
+<!-- Recording Interface Card -->
+<div class="md:col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center min-h-[400px] shadow-[0px_4px_20px_rgba(0,0,0,0.03)]">
+<div class="mb-stack-lg text-center">
+<h3 class="font-headline-md text-headline-md mb-2">Analyze Your Speech</h3>
+<p class="text-on-surface-variant text-label-md">Press the microphone to start recording your rebuttal.</p>
+</div>
+<!-- Visual Waveform (Static Representation) -->
+<div class="w-full flex items-center justify-center gap-1 h-24 mb-12 overflow-hidden">
+<div class="waveform-bar w-1.5 bg-primary-container/20 rounded-full h-8"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/30 rounded-full h-12"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/40 rounded-full h-16"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/60 rounded-full h-24"></div>
+<div class="waveform-bar w-1.5 bg-primary rounded-full h-18"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/80 rounded-full h-12"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/40 rounded-full h-20"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/20 rounded-full h-10"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/30 rounded-full h-14"></div>
+<div class="waveform-bar w-1.5 bg-primary rounded-full h-22"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/60 rounded-full h-16"></div>
+<div class="waveform-bar w-1.5 bg-primary-container/30 rounded-full h-10"></div>
+</div>
+<!-- Record Button -->
+<button class="group relative flex items-center justify-center w-24 h-24 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95" id="recordBtn">
+<span class="material-symbols-outlined text-4xl" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+<div class="absolute inset-0 rounded-full border-4 border-primary/20 recording-pulse pointer-events-none"></div>
+</button>
+<p class="mt-6 font-label-md text-primary font-bold" id="recordStatus">Ready to record</p>
+</div>
+<!-- AI Tips Sidebar Card -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-low border border-outline-variant rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.03)] flex flex-col">
+<h4 class="font-label-md text-label-md uppercase tracking-wider text-outline mb-4">Quick Tips</h4>
+<div class="space-y-4">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Target Pace</p>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Aim for 140-160 WPM for maximum audience retention.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="timer">timer</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Strategic Pauses</p>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Pause for 2 seconds after a major claim to allow impact.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Filler Words</p>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Take a breath instead of using "uh" or "um".</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Results Section -->
+<div class="space-y-gutter mb-stack-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md">Latest Analysis Results</h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm">High Clarity</span>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Stat Card: Pace -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<p class="text-outline text-label-sm mb-1">Pace (WPM)</p>
+<p class="font-headline-lg text-headline-lg text-primary">152</p>
+<p class="text-secondary text-label-sm mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+                            Optimal
+                        </p>
+</div>
+<!-- Stat Card: Fillers -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<p class="text-outline text-label-sm mb-1">Filler Words</p>
+<p class="font-headline-lg text-headline-lg text-primary">3</p>
+<p class="text-secondary text-label-sm mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+                            Very Low
+                        </p>
+</div>
+<!-- Stat Card: Pauses -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<p class="text-outline text-label-sm mb-1">Pause Count</p>
+<p class="font-headline-lg text-headline-lg text-primary">8</p>
+<p class="text-on-surface-variant text-label-sm mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+                            Strategic
+                        </p>
+</div>
+<!-- Stat Card: Clarity -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<p class="text-outline text-label-sm mb-1">Confidence</p>
+<p class="font-headline-lg text-headline-lg text-primary">92%</p>
+<p class="text-secondary text-label-sm mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="star">star</span>
+                            Exceptional
+                        </p>
+</div>
+</div>
+<!-- AI Feedback Summary -->
+<div class="bg-surface-container-lowest border border-outline-variant border-t-2 border-t-secondary rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-label-md text-label-md text-on-surface">AI Summary &amp; Feedback</h3>
+</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        Your delivery was exceptionally professional and measured. You maintained a consistent pace that allowed for clear enunciation of complex debate terms. The strategic use of pauses after your core arguments significantly enhanced the intellectual weight of your points. To further improve, try to minimize the slight rising intonation at the end of your declarative sentences to sound more authoritative during the rebuttal phase.
+                    </p>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full py-8 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant">© 2024 SpeakUp AI Debate Coach. Empowering intellectual growth.</p>
+<div class="flex gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        const recordBtn = document.getElementById('recordBtn');
+        const recordStatus = document.getElementById('recordStatus');
+        const waveformBars = document.querySelectorAll('.waveform-bar');
+        let isRecording = false;
+        let animationInterval;
+
+        recordBtn.addEventListener('click', () => {
+            isRecording = !isRecording;
+            
+            if (isRecording) {
+                recordStatus.innerText = 'Recording...';
+                recordStatus.classList.add('text-error');
+                recordStatus.classList.remove('text-primary');
+                recordBtn.classList.add('bg-error');
+                recordBtn.classList.remove('bg-primary');
+                
+                // Animate waveform
+                animationInterval = setInterval(() => {
+                    waveformBars.forEach(bar => {
+                        const height = Math.floor(Math.random() * 80) + 10;
+                        bar.style.height = `${height}px`;
+                        bar.classList.add('bg-error');
+                        bar.classList.remove('bg-primary', 'bg-primary-container/20', 'bg-primary-container/30', 'bg-primary-container/40', 'bg-primary-container/60', 'bg-primary-container/80');
+                    });
+                }, 150);
+            } else {
+                recordStatus.innerText = 'Analyzing speech...';
+                recordStatus.classList.remove('text-error');
+                recordStatus.classList.add('text-primary');
+                recordBtn.classList.remove('bg-error');
+                recordBtn.classList.add('bg-primary');
+                
+                clearInterval(animationInterval);
+                waveformBars.forEach((bar, index) => {
+                    bar.style.height = '16px';
+                    bar.classList.remove('bg-error');
+                    bar.classList.add('bg-primary-container/40');
+                });
+
+                setTimeout(() => {
+                    recordStatus.innerText = 'Analysis complete!';
+                }, 2000);
+            }
+        });
+    </script>
+</body></html>

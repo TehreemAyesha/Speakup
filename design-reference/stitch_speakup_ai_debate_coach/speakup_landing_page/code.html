@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SpeakUp | Your AI Debate Mentor</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#0040df",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "outline": "#747688",
+                        "surface-tint": "#104af0",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2d5bff",
+                        "secondary-container": "#82f5c1",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed-variant": "#005137",
+                        "outline-variant": "#c4c5d9",
+                        "on-secondary-container": "#00714e",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#4d565b",
+                        "tertiary-container": "#656e73",
+                        "surface": "#f8f9ff",
+                        "on-surface-variant": "#434656",
+                        "surface-container": "#e5eeff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-primary-container": "#efefff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-fixed": "#001355",
+                        "tertiary-fixed-dim": "#bfc8ce",
+                        "primary-fixed": "#dde1ff",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed": "#dbe4ea",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "inverse-primary": "#b8c3ff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#85f8c4",
+                        "on-tertiary-fixed-variant": "#3f484d",
+                        "secondary": "#006c4a",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed": "#141d21",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0035bd",
+                        "on-tertiary-container": "#e8f1f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "1rem",
+                        "container-max": "1280px",
+                        "stack-md": "1rem",
+                        "stack-lg": "2rem",
+                        "gutter": "1.5rem",
+                        "margin-desktop": "2.5rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .bento-item {
+            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(0, 64, 223, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<header class="bg-surface-bright shadow-sm fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="school">school</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SpeakUp</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary border-b-2 border-primary font-label-md text-label-md transition-colors h-16 flex items-center" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Lessons</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Critique</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 active:scale-95 transition-transform" data-icon="account_circle">account_circle</button>
+<button class="md:hidden material-symbols-outlined text-on-surface-variant" data-icon="menu">menu</button>
+</div>
+</nav>
+</header>
+<main class="pt-16 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex items-center justify-center px-margin-mobile md:px-margin-desktop bg-surface-bright">
+<!-- Atmospheric Shader Background -->
+
+<div class="relative z-10 max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-6 space-y-stack-lg">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container text-primary font-label-md text-label-md">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        New: Advanced Rebuttal Training
+                    </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface">
+                        SpeakUp: <span class="text-primary">Your debate mentor,</span> whenever you need one.
+                    </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Empowering students with AI-driven debate coaching. Master logic, refine your delivery, and receive instant, objective feedback on your arguments in a safe, scholarly environment.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-primary text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:shadow-lg hover:-translate-y-0.5 transition-all active:scale-95">
+                            Get Started
+                        </button>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-opacity-80 transition-all">
+                            View Demo
+                        </button>
+</div>
+</div>
+<!-- Hero Image / Visual Anchor -->
+<div class="lg:col-span-6 relative">
+<div class="relative w-full aspect-square max-w-lg mx-auto">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-full blur-3xl"></div>
+<img class="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl border border-white/20" data-alt="A clean, minimalist 3D rendering of a modern academic library or a high-end scholarly workspace. The scene is bathed in soft, natural morning light filtering through large windows, highlighting a sleek wooden desk with a digital tablet showing a clean debate interface. The color palette features calming blues and soft greens, creating a serene and focused intellectual atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmHMeAaFFEBThoTNRHy4JKvp6RmPOR_F1j-Xw0wew4prpmx7xcVXviIFwKRWAA-RJC-kCKvUrEOcLQBu_LtNvNp3RgCIEPOqQqi5u_QK0zdYlWCzUChpubdDRiBWF67HnyQGn50DZS2gHMLGSDzMXVY5PNJ-pBEGP1jmfyeA9IJ8Q7P1f_R3TdxASNQel0zffWxWM50jf_4imwDucCpWBCO7fdYNYzSeFN36_z5CQQb_4IKBOg1BL03XwDbPGoXSzTqngmctH4IoI"/>
+<!-- Floating Micro-UI Cards -->
+<div class="absolute -bottom-6 -left-6 glass-effect p-6 rounded-2xl shadow-xl border border-outline-variant max-w-[200px] animate-bounce-slow">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md text-on-surface">Strong Evidence</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-4/5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Built for Intellectual Growth</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                        We've distilled the complex art of debate into three core pillars, powered by objective AI feedback designed for safety and clarity.
+                    </p>
+</div>
+<div class="bento-grid">
+<!-- Feature 1: Learn -->
+<div class="bento-item col-span-12 md:col-span-4 bg-white p-8 border border-outline-variant flex flex-col items-start gap-4">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="menu_book">menu_book</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Learn</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Access a library of scholarly debate structures, from Parliamentary to Policy. Master the fundamentals of logic and rhetoric through bite-sized, interactive lessons.
+                        </p>
+<a class="mt-auto inline-flex items-center gap-2 text-primary font-label-md text-label-md group" href="#">
+                            Explore Curriculum
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Feature 2: Critique -->
+<div class="bento-item col-span-12 md:col-span-4 bg-white p-8 border border-outline-variant border-t-2 border-t-secondary flex flex-col items-start gap-4">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Get Critiqued</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Submit your arguments and receive instant feedback on logical fallacies, evidence strength, and rebuttal strategies from our objective AI engine.
+                        </p>
+<a class="mt-auto inline-flex items-center gap-2 text-primary font-label-md text-label-md group" href="#">
+                            Submit Argument
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Feature 3: Practice -->
+<div class="bento-item col-span-12 md:col-span-4 bg-white p-8 border border-outline-variant flex flex-col items-start gap-4">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="mic">mic</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Practice Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Speak your debate points aloud. Our AI analyzes your tone, pacing, and clarity to help you sound as confident as your arguments are sound.
+                        </p>
+<a class="mt-auto inline-flex items-center gap-2 text-primary font-label-md text-label-md group" href="#">
+                            Open Arena
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-primary text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-[120px]"></div>
+</div>
+<div class="max-w-container-max mx-auto text-center relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-6">Ready to find your voice?</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed max-w-2xl mx-auto mb-10 opacity-90">
+                    Join thousands of students and educators who are transforming the way they learn, argue, and communicate.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary px-10 py-4 rounded-lg font-headline-md text-headline-md shadow-xl hover:bg-surface-bright transition-colors">
+                        Create Free Account
+                    </button>
+<button class="border border-white/30 text-white px-10 py-4 rounded-lg font-headline-md text-headline-md hover:bg-white/10 transition-colors">
+                        School Licensing
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Strategy) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-12 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="space-y-4 max-w-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">SpeakUp</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    © 2024 SpeakUp AI Debate Coach. Empowering intellectual growth through ethical AI and scholarly rigor.
+                </p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-label-md text-on-surface">Platform</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Lessons</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Critique</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-label-md text-on-surface">Legal</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-label-md text-on-surface">Support</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Knowledge Base</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll reveal interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(item);
+        });
+    </script>
+</body></html>

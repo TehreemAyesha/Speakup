@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SpeakUp | Lessons</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#eff4ff",
+                      "primary": "#0040df",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface": "#0b1c30",
+                      "surface-variant": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "error-container": "#ffdad6",
+                      "outline": "#747688",
+                      "surface-tint": "#104af0",
+                      "error": "#ba1a1a",
+                      "primary-container": "#2d5bff",
+                      "secondary-container": "#82f5c1",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed-variant": "#005137",
+                      "outline-variant": "#c4c5d9",
+                      "on-secondary-container": "#00714e",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#4d565b",
+                      "tertiary-container": "#656e73",
+                      "surface": "#f8f9ff",
+                      "on-surface-variant": "#434656",
+                      "surface-container": "#e5eeff",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#213145",
+                      "on-primary-container": "#efefff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#002114",
+                      "on-primary-fixed": "#001355",
+                      "tertiary-fixed-dim": "#bfc8ce",
+                      "primary-fixed": "#dde1ff",
+                      "background": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "tertiary-fixed": "#dbe4ea",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "inverse-primary": "#b8c3ff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#85f8c4",
+                      "on-tertiary-fixed-variant": "#3f484d",
+                      "secondary": "#006c4a",
+                      "secondary-fixed-dim": "#68dba9",
+                      "on-tertiary-fixed": "#141d21",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#0035bd",
+                      "on-tertiary-container": "#e8f1f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "1rem",
+                      "container-max": "1280px",
+                      "stack-md": "1rem",
+                      "stack-lg": "2rem",
+                      "gutter": "1.5rem",
+                      "margin-desktop": "2.5rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .lesson-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .content-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-bright shadow-sm fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="school">school</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SpeakUp</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 h-16">
+<a class="text-primary border-b-2 border-primary font-label-md text-label-md h-full flex items-center transition-colors" href="#">Lessons</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Critique</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Delivery</a>
+</nav>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Sidebar (NavigationDrawer) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 z-40 bg-surface-container-low py-6 gap-stack-md pt-20 border-r border-outline-variant/30">
+<div class="px-6 mb-4">
+<h2 class="text-primary font-headline-md text-headline-md">Debate Coach</h2>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 mx-2 border-l-4 border-primary transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Lessons</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Critique</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+<span class="font-label-md text-label-md">Delivery</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 mx-2 transition-all duration-200 ease-in-out mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Arena -->
+<main class="flex-1 md:ml-64 pt-24 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Header & Tabs -->
+<section class="mb-stack-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Learning Path</h2>
+<p class="text-on-surface-variant font-body-md">Master the art of persuasion through structured modules.</p>
+</div>
+<div class="bg-surface-container-high p-1 rounded-xl flex gap-1 w-fit">
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md transition-all duration-200 bg-white text-primary shadow-sm" id="tab-beginner" onclick="switchTab('beginner')">Beginner</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md transition-all duration-200 text-on-surface-variant hover:text-on-surface" id="tab-intermediate" onclick="switchTab('intermediate')">Intermediate</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md transition-all duration-200 text-on-surface-variant hover:text-on-surface" id="tab-advanced" onclick="switchTab('advanced')">Advanced</button>
+</div>
+</div>
+<!-- Bento Layout / Lesson List -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="lesson-container">
+<!-- Lesson Grid -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<!-- Lesson Card 1 -->
+<div class="lesson-card cursor-pointer bg-white border border-outline-variant p-6 rounded-xl flex items-start gap-4" onclick="openLesson(0)">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Logic</span>
+<span class="text-label-sm text-outline">15 Min</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Foundations of Argument</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Learn how to construct a valid premise and reach a sound conclusion using classical syllogisms.</p>
+</div>
+<div class="flex flex-col items-center gap-2" onclick="event.stopPropagation()">
+<label class="relative flex items-center cursor-pointer">
+<input class="peer h-6 w-6 rounded border-outline-variant text-secondary focus:ring-secondary/20 transition-colors" type="checkbox"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 peer-checked:opacity-100">
+<span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<span class="text-label-sm text-outline">Done</span>
+</div>
+</div>
+<!-- Lesson Card 2 -->
+<div class="lesson-card cursor-pointer bg-white border border-outline-variant p-6 rounded-xl flex items-start gap-4" onclick="openLesson(1)">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Fallacy</span>
+<span class="text-label-sm text-outline">20 Min</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Spotting Red Herrings</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Identify common logical fallacies that distract from the main point of contention.</p>
+</div>
+<div class="flex flex-col items-center gap-2" onclick="event.stopPropagation()">
+<input class="h-6 w-6 rounded border-outline-variant text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="text-label-sm text-outline">Done</span>
+</div>
+</div>
+<!-- Lesson Card 3 -->
+<div class="lesson-card cursor-pointer bg-white border border-outline-variant p-6 rounded-xl flex items-start gap-4 border-l-4 border-l-secondary" onclick="openLesson(2)">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Evidence</span>
+<span class="text-label-sm text-outline">12 Min</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Evidence Hierarchy</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Not all sources are equal. Understand how to rank data from anecdotal to empirical.</p>
+</div>
+<div class="flex flex-col items-center gap-2" onclick="event.stopPropagation()">
+<input checked="" class="h-6 w-6 rounded border-outline-variant text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="text-label-sm text-secondary font-bold">Done</span>
+</div>
+</div>
+<!-- Lesson Card 4 -->
+<div class="lesson-card cursor-pointer bg-white border border-outline-variant p-6 rounded-xl flex items-start gap-4" onclick="openLesson(3)">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Ethics</span>
+<span class="text-label-sm text-outline">10 Min</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Principled Debate</h3>
+<p class="text-on-surface-variant text-body-md line-clamp-2">The ethics of scholarly disagreement and how to maintain intellectual honesty.</p>
+</div>
+<div class="flex flex-col items-center gap-2" onclick="event.stopPropagation()">
+<input class="h-6 w-6 rounded border-outline-variant text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="text-label-sm text-outline">Done</span>
+</div>
+</div>
+</div>
+<!-- Preview Area / Article Style Content -->
+<div class="lg:col-span-5">
+<div class="bg-white border border-outline-variant rounded-xl h-full min-h-[500px] flex flex-col p-8 content-transition overflow-hidden" id="lesson-preview">
+<div class="flex-1 flex flex-col items-center justify-center text-center opacity-60" id="preview-placeholder">
+<span class="material-symbols-outlined text-6xl text-outline mb-4" data-icon="auto_stories">auto_stories</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Select a Lesson</h4>
+<p class="text-body-md max-w-xs">Click on any module to the left to begin your scholarly journey.</p>
+</div>
+<div class="hidden h-full" id="preview-content">
+<div class="mb-6">
+<div class="bg-secondary-container text-on-secondary-container w-fit px-3 py-1 rounded-full text-[12px] uppercase font-bold mb-4" id="lesson-chip">LOGIC</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 leading-tight" id="lesson-title">Foundations of Argument</h2>
+<div class="flex items-center gap-4 text-on-surface-variant text-label-sm mb-6 pb-6 border-b border-outline-variant/30">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>15 min read</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="star">star</span>
+<span>Difficulty: Beginner</span>
+</div>
+</div>
+</div>
+<div class="prose prose-slate max-w-none">
+<p class="text-body-lg text-on-surface-variant leading-relaxed mb-6" id="lesson-body">
+                                    In the realm of debate, an argument is not a quarrel. It is a series of statements—the premises—intended to determine the degree of truth of another statement—the conclusion. 
+                                    <br/><br/>
+                                    The cornerstone of this process is the <strong>Syllogism</strong>. A syllogism is a kind of logical argument that applies deductive reasoning to arrive at a conclusion based on two or more propositions that are asserted or assumed to be true.
+                                </p>
+<div class="bg-surface-container-low p-6 rounded-lg border-l-4 border-secondary mb-6">
+<h5 class="font-label-md text-label-md text-on-surface-variant mb-2">AI TIP</h5>
+<p class="text-body-md text-on-secondary-container italic">"Focus on clarity first. A complex argument built on a shaky premise will always fail under scrutiny."</p>
+</div>
+</div>
+<button class="mt-auto w-full bg-primary text-white py-4 rounded-xl font-label-md text-label-md hover:bg-primary-container transition-all shadow-sm">Complete Lesson</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Progress Mini-Bento Section -->
+<section class="mt-stack-lg grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-md text-on-surface-variant">Weekly Goal</span>
+<span class="text-secondary font-bold">75%</span>
+</div>
+<div class="h-2 w-full bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center gap-4">
+<div class="h-12 w-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Achievements</h4>
+<p class="text-label-sm text-on-surface-variant">4 new badges available</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center gap-4">
+<div class="h-12 w-12 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Recent Activity</h4>
+<p class="text-label-sm text-on-surface-variant">Finished "Logic Foundations"</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-auto py-8">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-4 text-center md:text-left">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 SpeakUp AI Debate Coach. Empowering intellectual growth.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        const lessonData = [
+            {
+                tag: "Logic",
+                title: "Foundations of Argument",
+                body: "In the realm of debate, an argument is not a quarrel. It is a series of statements—the premises—intended to determine the degree of truth of another statement—the conclusion.<br><br>The cornerstone of this process is the Syllogism. A syllogism is a kind of logical argument that applies deductive reasoning to arrive at a conclusion based on two or more propositions that are asserted or assumed to be true. For example: All men are mortal. Socrates is a man. Therefore, Socrates is mortal.",
+                difficulty: "Beginner",
+                time: "15 min"
+            },
+            {
+                tag: "Fallacy",
+                title: "Spotting Red Herrings",
+                body: "A Red Herring is something that misleads or distracts from a relevant or important issue. It may be either a logical fallacy or a literary device that leads readers or audiences toward a false conclusion.<br><br>In debate, the red herring is often used deliberately to evade a difficult question or to shift the focus of the discussion to a topic where the speaker feels more confident. Recognizing this tactic allows you to redirect the conversation back to the primary point of contention.",
+                difficulty: "Beginner",
+                time: "20 min"
+            },
+            {
+                tag: "Evidence",
+                title: "Evidence Hierarchy",
+                body: "The strength of your argument often rests on the quality of your evidence. In high-level debate, we use a hierarchy to evaluate sources. <br><br>1. Empirical Peer-Reviewed Studies<br>2. Expert Consensus/Meta-analyses<br>3. Government Data & Official Reports<br>4. High-Quality Journalism<br>5. Anecdotal Evidence (Lowest).<br><br>Understanding this hierarchy allows you to neutralize an opponent's argument by highlighting the weakness of their source material.",
+                difficulty: "Beginner",
+                time: "12 min"
+            },
+            {
+                tag: "Ethics",
+                title: "Principled Debate",
+                body: "Debate should be a search for truth, not a victory for the ego. Principled debate requires intellectual honesty: admitting when a point has been lost, and correctly representing your opponent's views (avoiding the straw man fallacy).<br><br>Maintaining a scholarly demeanor and respecting the 'Rules of Engagement' ensures that the exchange remains productive and intellectually stimulating for all participants.",
+                difficulty: "Beginner",
+                time: "10 min"
+            }
+        ];
+
+        function openLesson(index) {
+            const data = lessonData[index];
+            const preview = document.getElementById('lesson-preview');
+            const placeholder = document.getElementById('preview-placeholder');
+            const content = document.getElementById('preview-content');
+            
+            // Animation effect
+            preview.style.opacity = '0';
+            
+            setTimeout(() => {
+                placeholder.classList.add('hidden');
+                content.classList.remove('hidden');
+                
+                document.getElementById('lesson-chip').innerText = data.tag;
+                document.getElementById('lesson-title').innerText = data.title;
+                document.getElementById('lesson-body').innerHTML = data.body;
+                
+                preview.style.opacity = '1';
+                
+                // Add "active" state to card
+                document.querySelectorAll('.lesson-card').forEach((card, i) => {
+                    if(i === index) {
+                        card.classList.add('border-primary', 'bg-surface-container-low');
+                    } else {
+                        card.classList.remove('border-primary', 'bg-surface-container-low');
+                    }
+                });
+            }, 200);
+        }
+
+        function switchTab(level) {
+            const tabs = ['beginner', 'intermediate', 'advanced'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if(t === level) {
+                    btn.classList.add('bg-white', 'text-primary', 'shadow-sm');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
+                    btn.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+            
+            // Reset preview
+            const placeholder = document.getElementById('preview-placeholder');
+            const content = document.getElementById('preview-content');
+            placeholder.classList.remove('hidden');
+            content.classList.add('hidden');
+            document.querySelectorAll('.lesson-card').forEach(card => card.classList.remove('border-primary', 'bg-surface-container-low'));
+        }
+    </script>
+</body></html>
