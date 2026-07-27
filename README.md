@@ -1,7 +1,8 @@
-Here is a complete, well-structured `README.md` file tailored specifically for your **SpeakUp** project. You can create a file named `README.md` in the root of your project folder (`C:\VS Code\Speakup`) and paste this directly in.
-
-```markdown
 # SpeakUp 🎙️
+
+Vercel public link
+
+https://speakup-m8zl-f85s8u7cm-tehreem5.vercel.app?_vercel_share=6gcyd1KFOO5bG9HagendoTJ8C2Nda5kp
 
 > **An AI-powered debate coaching platform designed to give students instant, personalized feedback without needing access to expensive debate mentors.**
 
